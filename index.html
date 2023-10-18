@@ -1,0 +1,63 @@
+<!-- FILEPATH: /workspaces/experience-primer-copilot-Niivas/index.html -->
+
+<div id="manga-container"></div>
+<!-- FILEPATH: /workspaces/experience-primer-copilot-Niivas/index.html -->
+
+<div id="manga-container">
+    <!-- Loop through each manga object in the mangas array -->
+    {% for manga in mangas %}
+        <div class="card">
+            <img src="{{ manga.image }}" alt="{{ manga.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ manga.title }}</h5>
+                <p class="card-text">{{ manga.description }}</p>
+                <a href="{{ manga.link }}" class="btn btn-primary">Read Now</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Add some CSS to style the cards -->
+<style>
+    .card {
+        display: inline-block;
+        width: 300px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px 5px 0 0;
+    }
+    .card-body {
+        padding: 10px;
+    }
+    .card-title {
+        font-size: 20px;
+        margin: 0;
+    }
+    .card-text {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0069d9;
+    }
+</style>

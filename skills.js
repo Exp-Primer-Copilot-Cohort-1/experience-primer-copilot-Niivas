@@ -1,3 +1,8 @@
+function calculateNumbers(a, b) {
+    return a + b;
+}
+
+
 let mangas;
 
 async function fetchAndLogJson(url) {
