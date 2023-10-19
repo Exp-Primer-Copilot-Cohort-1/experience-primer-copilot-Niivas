@@ -1,27 +1,26 @@
-import { createServer } from 'http';
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const server = createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello, world!');
+// Middleware to parse JSON request bodies
+app.use(express.json());
+
+// Array to store comments
+let comments = [];
+
+// Route to get all comments
+app.get('/comments', (req, res) => {
+    res.send(comments);
 });
 
-server.listen(3000, () => {
-    console.log('Server running on port 3000');
+// Route to add a new comment
+app.post('/comments', (req, res) => {
+    const newComment = req.body;
+    comments.push(newComment);
+    res.send('Comment added successfully');
 });
 
-import https from 'https';
-
-function getProjects() {
-    https.get('https://niivas.github.io/project', (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-            data += chunk;
-        });
-        res.on('end', () => {
-            console.log(data);
-        });
-    }).on('error', (err) => {
-        console.log('Error: ' + err.message);
-    });
-}
+// Start the server
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
